@@ -1,0 +1,8 @@
+sudo: required
+
+services:
+  - docker
+
+script:
+  - docker build -t lionax/docker-botcraft .
+  - docker run --rm lionax/docker-botcraft
