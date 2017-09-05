@@ -16,19 +16,19 @@ RUN curl -L https://github.com/lionax/bwapi/releases/download/v4.1.2/BWAPI-4.1.2
       && chmod 755 -R $BWAPI_DIR
 
 ENV BWTA_DIR /tmp/bwta2
-RUN curl -L https://bitbucket.org/auriarte/bwta2/downloads/BWTAlib_2.2.7z -o $BWTA_DIR.7z \
-   && 7za x -o$BWTA_DIR $BWTA_DIR.7z \
-      && rm $BWTA_DIR.7z \
+RUN curl -L https://bitbucket.org/auriarte/bwta2/downloads/BWTAlib_2.2.7z -o /tmp/bwta2.7z \
+   && 7za x -o$BWTA_DIR /tmp/bwta2.7z \
+      && rm /tmp/bwta2.7z \
       && mv $BWTA_DIR/BWTAlib_2.2/* $BWTA_DIR \
       && rm -R $BWTA_DIR/BWTAlib_2.2 \
       && chmod 755 -R $BWTA_DIR \
    && echo "export BWTA_DIR=$BWTA_DIR" >> /root/.bashrc
 
 ENV RAPIDJSON_DIR /tmp/rapidjson
-RUN curl -L https://github.com/miloyip/rapidjson/archive/v1.1.0.tar.gz -o $RAPIDJSON_DIR.tar.gz \
+RUN curl -L https://github.com/miloyip/rapidjson/archive/v1.1.0.tar.gz -o /tmp/rapidjson.tar.gz \
       && mkdir $RAPIDJSON_DIR \
-      && tar -xf $RAPIDJSON_DIR.tar.gz -C $RAPIDJSON_DIR \
-      && rm $RAPIDJSON_DIR.tar.gz \
+      && tar -xf /tmp/rapidjson.tar.gz -C $RAPIDJSON_DIR \
+      && rm /tmp/rapidjson.tar.gz \
       && mv $RAPIDJSON_DIR/rapidjson-1.1.0/* $RAPIDJSON_DIR \
       && rm -R $RAPIDJSON_DIR/rapidjson-1.1.0 \
       && chmod 755 -R $RAPIDJSON_DIR \
